@@ -9,7 +9,7 @@ from pymongo.server_api import ServerApi
 app = Flask(__name__)
 
 
-pipeline_path = "text_classification_pipeline.pkl"
+pipeline_path = "models/text_classification_pipeline.pkl"
 pipeline = joblib.load(pipeline_path)
 
 uri = "mongodb+srv://arthurgautier29480:lapin@cluster0.wuq03.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
