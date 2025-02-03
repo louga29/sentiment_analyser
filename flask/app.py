@@ -8,7 +8,6 @@ from pymongo.server_api import ServerApi
 
 app = Flask(__name__)
 
-
 pipeline_path = "models/text_classification_pipeline.pkl"
 pipeline = joblib.load(pipeline_path)
 
@@ -16,6 +15,13 @@ uri = "mongodb+srv://arthurgautier29480:Fortin.12@cluster0.wuq03.mongodb.net/?re
 client = MongoClient(uri, server_api=ServerApi('1'))
 mydb = client.get_database("sentiment_analyser")
 collection = mydb["reviews"]
+
+from pymongo.errors import ServerSelectionTimeoutError
+
+try:
+    collection.insert_one(feedback_data)
+except ServerSelectionTimeoutError as e:
+    print(f"Erreur de connexion à MongoDB : {e}")
 
 @app.route("/", methods=["GET"])
 def index():
