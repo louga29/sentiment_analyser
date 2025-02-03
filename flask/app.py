@@ -11,8 +11,9 @@ app = Flask(__name__)
 pipeline_path = "models/text_classification_pipeline.pkl"
 pipeline = joblib.load(pipeline_path)
 
-uri = "mongodb+srv://arthurgautier29480:lapin@cluster0.wuq03.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri = "mongodb+srv://arthurgautier29480:lapin@cluster0.wuq03.mongodb.net/?retryWrites=true&w=majority&tls=true&tlsAllowInvalidCertificates=true"
 client = MongoClient(uri, server_api=ServerApi('1'))
+
 mydb = client.get_database("sentiment_analyser")
 collection = mydb["reviews"]
 
