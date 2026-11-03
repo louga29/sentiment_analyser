@@ -4,7 +4,10 @@
 choix := [",", ".", ":", "!", "?", "Verr. Maj"]
 index := 1
 
-MButton::Send "{Blind}n"
+MButton:: {
+    majuscule := GetKeyState("Shift") != GetKeyState("CapsLock", "T")
+    SendText majuscule ? "N" : "n"
+}
 
 XButton1:: {
     global index
