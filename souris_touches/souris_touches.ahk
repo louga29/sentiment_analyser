@@ -4,7 +4,8 @@
 choix := [",", ".", ":", "!", "?", "Verr. Maj"]
 index := 1
 
-MButton:: {
+MButton::
+SC028:: {
     majuscule := GetKeyState("Shift") != GetKeyState("CapsLock", "T")
     SendText majuscule ? "N" : "n"
 }
